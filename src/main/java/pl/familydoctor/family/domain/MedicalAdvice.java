@@ -3,8 +3,6 @@ package pl.familydoctor.family.domain;
 import lombok.Data;
 
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import java.util.Date;
 
 @Entity
@@ -23,8 +21,5 @@ public class MedicalAdvice extends BaseEntity {
 
     private String comment;
 
-    @ManyToOne
-    @JoinColumn(name = "patient_id")
-    private Patient patient;
 
 }
