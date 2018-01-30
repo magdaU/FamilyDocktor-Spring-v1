@@ -1,12 +1,9 @@
 package pl.familydoctor.family.resource;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pl.familydoctor.family.domain.Patient;
 import pl.familydoctor.family.repository.PatientRepository;
+import pl.familydoctor.family.service.PatientService;
 
 import java.util.List;
 
@@ -15,15 +12,21 @@ import java.util.List;
 public class PatientResource {
 
     private final PatientRepository patientRepository;
+    private final PatientService patientService;
 
-    @Autowired
-    public PatientResource(PatientRepository patientRepository) {
+    public PatientResource(PatientRepository patientRepository, PatientService patientService) {
         this.patientRepository = patientRepository;
+        this.patientService = patientService;
     }
 
     @GetMapping
     public @ResponseBody
     List<Patient> getAll() {
         return patientRepository.findAll();
+    }
+
+    @PostMapping
+    public void addPatient (Patient patient){
+        patientService.addPatient(patient);
     }
 }
