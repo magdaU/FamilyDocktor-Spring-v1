@@ -25,7 +25,7 @@
     </properties>
     <modules>
         <module>doctor_backend</module>
-        <!--<module>doctor_frontend</module>-->
+        <module>doctor-frontend</module>
     </modules>
 
     <build>
