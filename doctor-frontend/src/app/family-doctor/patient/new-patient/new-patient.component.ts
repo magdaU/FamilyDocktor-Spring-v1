@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {Patient} from "../patient.model";
-import {PatientService} from "../service/patient.service";
-import {SexService} from "../service/sex.service";
+import {Patient} from '../patient.model';
+import {PatientService} from '../service/patient.service';
+import {SexService} from '../service/sex.service';
+import {Sex} from '../sex.model';
 
 @Component({
   selector: 'app-new-patient',
@@ -11,7 +12,7 @@ import {SexService} from "../service/sex.service";
 export class NewPatientComponent implements OnInit {
 
   patient: Patient;
-  sexList: any[];
+  sexList: Sex[];
 
   constructor(private patientService: PatientService, private sexService: SexService) { }
 
@@ -20,7 +21,8 @@ export class NewPatientComponent implements OnInit {
     this.sexList = this.sexService.findAll();
   }
 
-  save(){
+  save() {
+    this.patientService.create(this.patient).subscribe();
     console.log(this.patient);
   }
 

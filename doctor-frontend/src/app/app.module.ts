@@ -5,6 +5,7 @@ import {AppRoutingModule} from './app-routing.module';
 
 import {AppComponent} from './app.component';
 import {FamilyDoctorModule} from './family-doctor/family-doctor.module';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import {FamilyDoctorModule} from './family-doctor/family-doctor.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FamilyDoctorModule
+    FamilyDoctorModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

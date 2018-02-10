@@ -30,7 +30,7 @@
           <label for="field_sex">Sex</label>
           <select id="field_sex" name="sex" [(ngModel)]="patient.sex">
             <option [ngValue]="null"></option>
-            <option [ngValue]="sex.value" *ngFor="let sex of sexList">{{sex.value}}</option>
+            <option [ngValue]="sex.nameEnum" *ngFor="let sex of sexList">{{sex.nameFront}}</option>
           </select>
         </div>
       </div>

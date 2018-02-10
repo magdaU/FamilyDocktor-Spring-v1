@@ -1,13 +1,19 @@
 import {Injectable} from '@angular/core';
+import {Sex} from '../sex.model';
 
 @Injectable()
 export class SexService {
 
-  sex = [{value: 'Male'}, {value: 'Female'}];
+  sex: Sex[];
 
-  constructor() { }
+  constructor() {
+  }
 
   findAll(): any[] {
+    this.sex = [
+      {nameFront: 'Male', nameEnum: 'MALE'},
+      {nameFront: 'Female', nameEnum: 'FEMALE'}
+    ];
     return this.sex;
   }
 
