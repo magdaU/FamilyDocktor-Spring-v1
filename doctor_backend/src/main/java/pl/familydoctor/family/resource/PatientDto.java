@@ -1,11 +1,11 @@
 package pl.familydoctor.family.resource;
 
-import lombok.Value;
+import lombok.Data;
 
 import java.io.Serializable;
 import java.util.Date;
 
-@Value
+@Data
 public class PatientDto implements Serializable {
 
     private Long id;
