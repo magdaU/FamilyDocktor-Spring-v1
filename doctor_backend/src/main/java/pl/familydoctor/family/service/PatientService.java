@@ -1,26 +1,26 @@
 package pl.familydoctor.family.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.familydoctor.family.domain.Patient;
-import pl.familydoctor.family.domain.Sex;
+import pl.familydoctor.family.mapper.PatientMapper;
 import pl.familydoctor.family.repository.PatientRepository;
 import pl.familydoctor.family.resource.PatientDto;
 
 @Service
 public class PatientService {
 
-    @Autowired
-    private PatientRepository patientRepository;
+    private final PatientRepository patientRepository;
+
+    private final PatientMapper patientMapper;
+
+    public PatientService(PatientRepository patientRepository, PatientMapper patientMapper) {
+        this.patientRepository = patientRepository;
+        this.patientMapper = patientMapper;
+    }
 
     public void addPatient(PatientDto patientDto) {
         if (patientDto.getId() == null || patientDto.getId() == 0) {
-            //TODO add mapper
-            Patient patient = new Patient();
-            patient.setSex(Enum.valueOf(Sex.class, patientDto.getSex()));
-            patient.setFirstName(patientDto.getFirstName());
-            patient.setLastName(patientDto.getLastName());
-            patient.setBirthDate(patientDto.getBirthDate());
+            Patient patient = patientMapper.convertToPatient(patientDto);
             patientRepository.save(patient);
         }
     }
