@@ -25,14 +25,19 @@ public class PatientMapper {
         List<PatientDto> results = new ArrayList<>();
 
         patients.forEach(patient -> {
-            PatientDto patientDto= new PatientDto();
-            patientDto.setBirthDate(patient.getBirthDate());
-            patientDto.setFirstName(patient.getFirstName());
-            patientDto.setLastName(patient.getLastName());
-            patientDto.setSex(patient.getSex().name());
-            patientDto.setId(patient.getId());
+            PatientDto patientDto = convertToPatientDto(patient);
             results.add(patientDto);
         });
         return results;
+    }
+
+    public PatientDto convertToPatientDto(Patient patient) {
+        PatientDto patientDto= new PatientDto();
+        patientDto.setBirthDate(patient.getBirthDate());
+        patientDto.setFirstName(patient.getFirstName());
+        patientDto.setLastName(patient.getLastName());
+        patientDto.setSex(patient.getSex().name());
+        patientDto.setId(patient.getId());
+        return patientDto;
     }
 }
