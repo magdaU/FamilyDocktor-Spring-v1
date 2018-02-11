@@ -7,8 +7,9 @@ import pl.familydoctor.family.service.PatientService;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping(path = "/patient")
+@RequestMapping(path = "/api/patient")
 public class PatientResource {
 
     private final PatientRepository patientRepository;
@@ -26,7 +27,7 @@ public class PatientResource {
     }
 
     @PostMapping
-    public void addPatient (Patient patient){
-        patientService.addPatient(patient);
+    public void addPatient (@RequestBody PatientDto patientDto){
+        patientService.addPatient(patientDto);
     }
 }
