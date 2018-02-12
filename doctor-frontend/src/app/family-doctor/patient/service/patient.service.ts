@@ -11,8 +11,11 @@ export class PatientService {
   constructor(private http: HttpClient) {
   }
 
+  findAll(): Observable<Array<Patient>> {
+    return this.http.get<Array<Patient>>(this.apiUrl);
+  }
+
   create(patient: Patient): Observable<Patient> {
     return this.http.post(this.apiUrl, patient);
   }
-
 }

@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <h4>List of patients</h4>
+  </div>
+  <div class="row">
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>First name</th>
+          <th>Last name</th>
+          <th>Birth Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let patient of patients">
+          <td>{{patient.id}}</td>
+          <td>{{patient.firstName}}</td>
+          <td>{{patient.lastName}}</td>
+          <td>{{patient.birthDate | date}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
