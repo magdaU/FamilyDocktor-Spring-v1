@@ -1,0 +1,51 @@
+<div>
+  <div>
+    <h4>Add new patient</h4>
+  </div>
+  <div>
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+      <div>
+        <div [hidden]="!disease.id">
+          <label for="id">ID</label>
+          <input type="text" id="id" name="id"
+                 [(ngModel)]="disease.id" readonly/>
+        </div>
+
+        <div>
+          <label for="field_symptom">Symptom</label>
+          <input type="text" name="symptom" id="field_symptom"
+                 [(ngModel)]="disease.symptom"/>
+        </div>
+        <div>
+          <label for="field_diagnosis">Diagnosis</label>
+          <input type="text" name="diagnosis" id="field_diagnosis"
+                 [(ngModel)]="disease.diagnosis"/>
+        </div>
+        <div>
+          <label for="field_isDoctorDiagnosis">Is Doctor Diagnosis ?</label>
+          <input type="text" name="isDoctorDiagnosis" id="field_isDoctorDiagnosis"
+                 [(ngModel)]="disease.isDoctorDiagnosis"/>
+        </div>
+        <div>
+          <label for="field_diseaseStartDate">Disease StartDate</label>
+          <input type="text" name="diseaseStartDate" id="field_diseaseStartDate"
+                 [(ngModel)]="disease.diseaseStartDate"/>
+        </div>
+        <div>
+          <label for="field_diseaseEndDate">Disease EndDate</label>
+          <input type="text" name="diseaseEndDate" id="field_diseaseEndDate"
+                 [(ngModel)]="disease.diseaseEndDate"/>
+        </div>
+      </div>
+
+      <div>
+        <button type="submit">
+          <span>Save</span>
+        </button>
+        <button type="button" (click)="goBack()">
+          <span>Go back</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
