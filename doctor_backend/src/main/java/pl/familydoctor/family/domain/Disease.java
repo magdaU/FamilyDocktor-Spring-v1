@@ -18,7 +18,11 @@ public class Disease extends BaseEntity {
 
     private String diagnosis;
 
-    private Date symptomDate;
+    private Boolean doctorDiagnosis;
+
+    private Date diseaseStartDate;
+
+    private Date diseaseEndDate;
 
     @ManyToOne
     @JoinColumn(name = "patient_id")

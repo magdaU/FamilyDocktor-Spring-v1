@@ -3,25 +3,25 @@ package pl.familydoctor.family.resource;
 import org.springframework.web.bind.annotation.*;
 import pl.familydoctor.family.domain.Disease;
 import pl.familydoctor.family.repository.DiseaseRepository;
+import pl.familydoctor.family.resource.dto.DiseaseDto;
+import pl.familydoctor.family.service.DiseaseService;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping(path = "/user/patient/{patientId}/disease")
+@RequestMapping(path = "/api/patient/disease")
 public class DiseaseResource {
 
-    private final DiseaseRepository diseaseRepository;
+    private final DiseaseService diseaseService;
 
-    public DiseaseResource(DiseaseRepository diseaseRepository) {
-        this.diseaseRepository = diseaseRepository;
+    public DiseaseResource(DiseaseService diseaseService) {
+        this.diseaseService = diseaseService;
     }
 
-    @GetMapping
-    @ResponseBody
-    public List<Disease> getAllDiseaseByPatientId(@PathVariable("patientId") Long patientId){
-
-        return diseaseRepository.getAllByPatientId(patientId);
+    @PostMapping
+    public void saveDisease(@RequestBody DiseaseDto diseaseDto) {
+        System.out.println(diseaseDto);
+        diseaseService.createDisease(diseaseDto);
     }
-
-
 }
