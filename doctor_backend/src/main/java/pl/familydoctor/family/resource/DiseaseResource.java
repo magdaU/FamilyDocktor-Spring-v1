@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.*;
 import pl.familydoctor.family.domain.Disease;
 import pl.familydoctor.family.repository.DiseaseRepository;
 import pl.familydoctor.family.resource.dto.DiseaseDto;
+import pl.familydoctor.family.service.DiseaseService;
 
 import java.util.List;
 
@@ -12,16 +13,15 @@ import java.util.List;
 @RequestMapping(path = "/api/patient/disease")
 public class DiseaseResource {
 
-    private final DiseaseRepository diseaseRepository;
+    private final DiseaseService diseaseService;
 
-    public DiseaseResource(DiseaseRepository diseaseRepository) {
-        this.diseaseRepository = diseaseRepository;
+    public DiseaseResource(DiseaseService diseaseService) {
+        this.diseaseService = diseaseService;
     }
 
     @PostMapping
-    public void saveDisease(@RequestBody DiseaseDto diseaseDto){
+    public void saveDisease(@RequestBody DiseaseDto diseaseDto) {
         System.out.println(diseaseDto);
+        diseaseService.createDisease(diseaseDto);
     }
-
-
 }

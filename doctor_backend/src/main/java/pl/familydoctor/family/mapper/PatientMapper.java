@@ -4,40 +4,48 @@ import org.springframework.stereotype.Service;
 import pl.familydoctor.family.domain.Patient;
 import pl.familydoctor.family.domain.Sex;
 import pl.familydoctor.family.resource.PatientDto;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class PatientMapper {
+public class PatientMapper implements Mapper<PatientDto, Patient> {
 
-    public Patient convertToPatient(PatientDto patientDto) {
+    @Override
+    public Patient convertToEntity(PatientDto dto) {
         Patient patient = new Patient();
-        patient.setSex(Enum.valueOf(Sex.class, patientDto.getSex()));
-        patient.setFirstName(patientDto.getFirstName());
-        patient.setLastName(patientDto.getLastName());
-        patient.setBirthDate(patientDto.getBirthDate());
-
+        patient.setSex(Enum.valueOf(Sex.class, dto.getSex()));
+        patient.setFirstName(dto.getFirstName());
+        patient.setLastName(dto.getLastName());
+        patient.setBirthDate(dto.getBirthDate());
         return patient;
     }
 
-    public List<PatientDto> convertToPatientsDto(List<Patient> patients) {
+    @Override
+    public PatientDto convertToDto(Patient entity) {
+        PatientDto patientDto = new PatientDto();
+        patientDto.setBirthDate(entity.getBirthDate());
+        patientDto.setFirstName(entity.getFirstName());
+        patientDto.setLastName(entity.getLastName());
+        patientDto.setSex(entity.getSex().name());
+        patientDto.setId(entity.getId());
+        return patientDto;
+    }
+
+    @Override
+    public List<Patient> convertToEntities(List<PatientDto> dtos) {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public List<PatientDto> convertToDtos(List<Patient> entities) {
         List<PatientDto> results = new ArrayList<>();
 
-        patients.forEach(patient -> {
-            PatientDto patientDto = convertToPatientDto(patient);
+        entities.forEach(patient -> {
+            PatientDto patientDto = convertToDto(patient);
             results.add(patientDto);
         });
         return results;
-    }
-
-    public PatientDto convertToPatientDto(Patient patient) {
-        PatientDto patientDto= new PatientDto();
-        patientDto.setBirthDate(patient.getBirthDate());
-        patientDto.setFirstName(patient.getFirstName());
-        patientDto.setLastName(patient.getLastName());
-        patientDto.setSex(patient.getSex().name());
-        patientDto.setId(patient.getId());
-        return patientDto;
     }
 }
