@@ -3,6 +3,7 @@ package pl.familydoctor.family.mapper;
 import org.springframework.stereotype.Service;
 import pl.familydoctor.family.domain.Disease;
 import pl.familydoctor.family.resource.dto.DiseaseDto;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.List;
 
@@ -32,6 +33,6 @@ public class DiseaseMapper implements Mapper<DiseaseDto, Disease> {
 
     @Override
     public List<DiseaseDto> convertToDtos(List<Disease> entities) {
-        return null;
+        throw new NotImplementedException();
     }
 }

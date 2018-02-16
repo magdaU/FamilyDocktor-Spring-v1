@@ -24,4 +24,9 @@ public class DiseaseResource {
         System.out.println(diseaseDto);
         diseaseService.createDisease(diseaseDto);
     }
+
+    @GetMapping
+    public List<DiseaseDto> getAllDiseases() {
+        return diseaseService.getAllDisease();
+    }
 }
