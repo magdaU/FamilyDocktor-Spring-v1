@@ -31,4 +31,24 @@ public class DiseaseService {
         List<DiseaseDto> diseaseDtoList = diseaseMapper.convertToDtos(diseaseList);
         return diseaseDtoList;
     }
+
+    public DiseaseDto updateDisease(DiseaseDto diseaseDto) {
+        if (diseaseDto.getId()>0){
+            Disease disease=diseaseRepository.findOne(diseaseDto.getId());
+            disease.setDiseaseEndDate(diseaseDto.getDiseaseEndDate());
+            disease.setDiseaseStartDate(diseaseDto.getDiseaseStartDate());
+            disease.setDiagnosis(diseaseDto.getDiagnosis());
+            disease.setSymptom(diseaseDto.getSymptom());
+            disease.setDoctorDiagnosis(diseaseDto.getIsDoctorDiagnosis());
+            diseaseRepository.save(disease);
+            return diseaseMapper.convertToDto(disease);
+        }
+        return null;
+    }
+
+    public void deleteDisease(DiseaseDto diseaseDto) {
+        if(diseaseDto.getId()>0){
+            diseaseRepository.delete(diseaseDto.getId());
+        }
+    }
 }

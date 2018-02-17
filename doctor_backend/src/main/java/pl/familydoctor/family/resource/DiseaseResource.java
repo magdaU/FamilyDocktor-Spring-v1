@@ -29,4 +29,13 @@ public class DiseaseResource {
     public List<DiseaseDto> getAllDiseases() {
         return diseaseService.getAllDisease();
     }
+
+    @PutMapping
+    public DiseaseDto updateDisease(@RequestBody DiseaseDto diseaseDto){
+        return diseaseService.updateDisease(diseaseDto);
+    }
+    @DeleteMapping
+    public void deleteDisease(@RequestBody DiseaseDto diseaseDto){
+        diseaseService.deleteDisease(diseaseDto);
+    }
 }
