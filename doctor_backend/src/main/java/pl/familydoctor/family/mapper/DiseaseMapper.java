@@ -3,7 +3,9 @@ package pl.familydoctor.family.mapper;
 import org.springframework.stereotype.Service;
 import pl.familydoctor.family.domain.Disease;
 import pl.familydoctor.family.resource.dto.DiseaseDto;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -22,7 +24,14 @@ public class DiseaseMapper implements Mapper<DiseaseDto, Disease> {
 
     @Override
     public DiseaseDto convertToDto(Disease entity) {
-        return null;
+        DiseaseDto diseaseDto = new DiseaseDto();
+        diseaseDto.setId(entity.getId());
+        diseaseDto.setDiagnosis(entity.getDiagnosis());
+        diseaseDto.setIsDoctorDiagnosis(entity.getDoctorDiagnosis());
+        diseaseDto.setSymptom(entity.getSymptom());
+        diseaseDto.setDiseaseStartDate(entity.getDiseaseStartDate());
+        diseaseDto.setDiseaseEndDate(entity.getDiseaseEndDate());
+        return diseaseDto;
     }
 
     @Override
@@ -32,6 +41,11 @@ public class DiseaseMapper implements Mapper<DiseaseDto, Disease> {
 
     @Override
     public List<DiseaseDto> convertToDtos(List<Disease> entities) {
-        return null;
+        List<DiseaseDto> diseaseDtoList = new ArrayList<>();
+        entities.forEach(disease -> {
+            DiseaseDto diseaseDto = convertToDto(disease);
+            diseaseDtoList.add(diseaseDto);
+        });
+        return diseaseDtoList;
     }
 }

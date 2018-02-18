@@ -7,6 +7,8 @@ import pl.familydoctor.family.mapper.Mapper;
 import pl.familydoctor.family.repository.DiseaseRepository;
 import pl.familydoctor.family.resource.dto.DiseaseDto;
 
+import java.util.List;
+
 @Service
 public class DiseaseService {
 
@@ -22,5 +24,31 @@ public class DiseaseService {
     public void createDisease(DiseaseDto diseaseDto) {
         Disease disease = diseaseMapper.convertToEntity(diseaseDto);
         diseaseRepository.save(disease);
+    }
+
+    public List<DiseaseDto> getAllDisease() {
+        List<Disease> diseaseList = diseaseRepository.findAll();
+        List<DiseaseDto> diseaseDtoList = diseaseMapper.convertToDtos(diseaseList);
+        return diseaseDtoList;
+    }
+
+    public DiseaseDto updateDisease(DiseaseDto diseaseDto) {
+        if (diseaseDto.getId()>0){
+            Disease disease=diseaseRepository.findOne(diseaseDto.getId());
+            disease.setDiseaseEndDate(diseaseDto.getDiseaseEndDate());
+            disease.setDiseaseStartDate(diseaseDto.getDiseaseStartDate());
+            disease.setDiagnosis(diseaseDto.getDiagnosis());
+            disease.setSymptom(diseaseDto.getSymptom());
+            disease.setDoctorDiagnosis(diseaseDto.getIsDoctorDiagnosis());
+            diseaseRepository.save(disease);
+            return diseaseMapper.convertToDto(disease);
+        }
+        return null;
+    }
+
+    public void deleteDisease(DiseaseDto diseaseDto) {
+        if(diseaseDto.getId()>0){
+            diseaseRepository.delete(diseaseDto.getId());
+        }
     }
 }
