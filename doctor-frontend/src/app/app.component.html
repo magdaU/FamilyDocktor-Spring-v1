@@ -1,6 +1,39 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<a routerLink="/patient" routerLinkActive="active">Patients</a>
-<a routerLink="/patient/new" routerLinkActive="active">New patient</a>
-<a routerLink="/disease/new" routerLinkActive="active">New disease</a>
-<a routerLink="/disease" routerLinkActive="active">Diseases</a>
+<mat-toolbar color="primary" class="fc-toolbar-spacer">
+  <span>Family doctor</span>
+
+  <div class="fd-toolbar-padding">
+    <span>
+      <button mat-icon-button [matMenuTriggerFor]="menuDoctor">
+        <i class="material-icons">healing</i>
+      </button>
+      <mat-menu #menuDoctor="matMenu">
+        <button mat-menu-item routerLink="/patient">
+          <mat-icon>view_list</mat-icon>
+          <span>Patient list</span>
+        </button>
+        <button mat-menu-item routerLink="/patient/new">
+          <mat-icon>add_circle</mat-icon>
+          <span>Add patient</span>
+        </button>
+      </mat-menu>
+    </span>
+  </div>
+
+  <span class="fd-toolbar-spacer"></span>
+
+  <mat-menu #appMenu="matMenu">
+    <button mat-menu-item>Settings</button>
+    <button mat-menu-item>Help</button>
+  </mat-menu>
+
+  <mat-menu #appMenu="matMenu">
+    <button mat-menu-item>Settings</button>
+    <button mat-menu-item>Help</button>
+  </mat-menu>
+
+  <button mat-icon-button [matMenuTriggerFor]="appMenu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+
+</mat-toolbar>
 <router-outlet></router-outlet>

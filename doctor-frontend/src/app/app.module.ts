@@ -7,6 +7,14 @@ import {AppComponent} from './app.component';
 import {FamilyDoctorModule} from './family-doctor/family-doctor.module';
 import {HttpClientModule} from '@angular/common/http';
 
+import {
+  MatIconModule,
+  MatButtonModule,
+  MatMenuModule,
+  MatToolbarModule,
+  MatCardModule,
+} from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -16,7 +24,12 @@ import {HttpClientModule} from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     FamilyDoctorModule,
-    HttpClientModule
+    HttpClientModule,
+    MatIconModule,
+    MatButtonModule,
+    MatMenuModule,
+    MatToolbarModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
