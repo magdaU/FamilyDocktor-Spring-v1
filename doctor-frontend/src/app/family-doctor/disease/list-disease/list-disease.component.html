@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <h4>List of diseases</h4>
+  </div>
+  <div class="row">
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Symptom</th>
+          <th>Diagnosis</th>
+          <th>Is doctor diagnosis</th>
+          <th>Disease Start Date</th>
+          <th>Disease End Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let disease of diseases">
+          <td>{{disease.id}}</td>
+          <td>{{disease.symptom}}</td>
+          <td>{{disease.diagnosis}}</td>
+          <td>{{disease.isDoctorDiagnosis}}</td>
+          <td>{{disease.diseaseStartDate | date}}</td>
+          <td>{{disease.diseaseEndDate | date}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

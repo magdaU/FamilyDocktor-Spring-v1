@@ -11,6 +11,9 @@ export class DiseaseService {
   constructor(private http: HttpClient) {
   }
 
+  findAll(): Observable<Array<Disease>>{
+    return this.http.get<Array<Disease>> (this.apiURL);
+  }
   create(disease: Disease): Observable<Disease> {
     return this.http.post(this.apiURL, disease);
   }
