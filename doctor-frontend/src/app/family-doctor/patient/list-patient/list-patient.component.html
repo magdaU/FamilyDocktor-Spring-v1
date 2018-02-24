@@ -11,6 +11,7 @@
           <th>First name</th>
           <th>Last name</th>
           <th>Birth Date</th>
+          <th></th>
         </tr>
         </thead>
         <tbody>
@@ -19,6 +20,9 @@
           <td>{{patient.firstName}}</td>
           <td>{{patient.lastName}}</td>
           <td>{{patient.birthDate | date}}</td>
+          <td>
+            <button mat-fab color="primary" routerLink="/patient/{{patient.id}}/detail">Details</button>
+          </td>
         </tr>
         </tbody>
       </table>

@@ -7,15 +7,16 @@ import {FormsModule} from '@angular/forms';
 import {PatientService} from './service/patient.service';
 import {SexService} from './service/sex.service';
 import {ListPatientModule} from "./list-patient/list-patient.module";
+import {PatientDetailModule} from "./patient-detail/patient-detail.module";
 
 @NgModule({
   imports: [
     CommonModule,
     NewPatientModule,
     ListPatientModule,
-    FormsModule
+    PatientDetailModule,
   ],
-  declarations: [NewPatientComponent],
+  declarations: [],
   providers: [PatientService, SexService]
 })
 export class PatientModule { }

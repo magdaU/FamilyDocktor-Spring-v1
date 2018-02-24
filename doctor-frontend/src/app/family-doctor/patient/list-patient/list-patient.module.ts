@@ -3,11 +3,13 @@ import {CommonModule} from '@angular/common';
 
 import {ListPatientRoutingModule} from './list-patient-routing.module';
 import {ListPatientComponent} from './list-patient.component';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   imports: [
     CommonModule,
-    ListPatientRoutingModule
+    ListPatientRoutingModule,
+    MatButtonModule
   ],
   declarations: [ListPatientComponent]
 })

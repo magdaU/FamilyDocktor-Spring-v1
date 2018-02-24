@@ -1,0 +1,20 @@
+.fd-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  padding: 1em;
+}
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+}
+
+.fd-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.fd-full-width {
+  width: 100%;
+}
