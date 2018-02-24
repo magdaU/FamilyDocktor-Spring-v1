@@ -1,48 +1,26 @@
-<div>
-  <div>
-    <h4>Add new patient</h4>
-  </div>
-  <div>
-    <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
-      <div>
-        <div [hidden]="!patient.id">
-          <label for="id">ID</label>
-          <input type="text" id="id" name="id"
-                 [(ngModel)]="patient.id" readonly/>
-        </div>
-
-        <div>
-          <label for="field_first_name">First name</label>
-          <input type="text" name="firstName" id="field_first_name"
-                 [(ngModel)]="patient.firstName"/>
-        </div>
-        <div>
-          <label for="field_last_name">Last name</label>
-          <input type="text" name="lastName" id="field_last_name"
-                 [(ngModel)]="patient.lastName"/>
-        </div>
-        <div>
-          <label for="field_birth_date">Birthdate</label>
-          <input type="date" name="birthDate" id="field_birth_date"
-                 [(ngModel)]="patient.birthDate"/>
-        </div>
-        <div>
-          <label for="field_sex">Sex</label>
-          <select id="field_sex" name="sex" [(ngModel)]="patient.sex">
-            <option [ngValue]="null"></option>
-            <option [ngValue]="sex.nameEnum" *ngFor="let sex of sexList">{{sex.nameFront}}</option>
-          </select>
-        </div>
-      </div>
-
-      <div>
-        <button type="submit">
-          <span>Save</span>
-        </button>
-        <button type="button" (click)="goBack()">
-          <span>Go back</span>
-        </button>
-      </div>
-    </form>
-  </div>
+<div class="fd-container mat-elevation-z8 mat-table">
+  <h4>Add new patient</h4>
+  <form class="fd-form">
+    <mat-form-field class="fd-full-width">
+      <input matInput placeholder="First name" [(ngModel)]="patient.firstName" name="firstName">
+    </mat-form-field>
+    <mat-form-field class="fd-full-width">
+      <input matInput placeholder="Last name" [(ngModel)]="patient.lastName" name="lastName">
+    </mat-form-field>
+    <mat-form-field class="fd-full-width">
+      <input matInput [matDatepicker]="picker" placeholder="Choose a birthdate" [(ngModel)]="patient.birthDate"
+             name="birthDate">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="fd-full-width">
+      <mat-select placeholder="Sex" [(value)]="patient.sex">
+        <mat-option *ngFor="let sex of sexList" [value]="sex.nameEnum">
+          {{sex.nameFront}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="save()">Save</button>
+    <button mat-raised-button color="primary" (click)="goBack()">Go back</button>
+  </form>
 </div>
