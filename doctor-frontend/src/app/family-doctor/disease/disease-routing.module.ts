@@ -1,14 +1,14 @@
 import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 import {NewDiseaseComponent} from "./new-disease/new-disease.component";
 import {ListDiseaseComponent} from "./list-disease/list-disease.component";
 
 
 const routes: Routes = [
   {
-    path: 'disease/new', component: NewDiseaseComponent
+    path: 'patient/:id/disease/new', component: NewDiseaseComponent
   }, {
-    path: 'disease', component: ListDiseaseComponent
+    path: 'patient/:id/disease', component: ListDiseaseComponent
   }
 
 ];

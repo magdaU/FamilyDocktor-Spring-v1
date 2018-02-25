@@ -18,4 +18,6 @@ public class DiseaseDto {
     private Date diseaseStartDate;
 
     private Date diseaseEndDate;
+
+    private Long patientId;
 }

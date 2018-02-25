@@ -2,9 +2,10 @@ package pl.familydoctor.family.service;
 
 import org.springframework.stereotype.Service;
 import pl.familydoctor.family.domain.Disease;
-import pl.familydoctor.family.mapper.DiseaseMapper;
+import pl.familydoctor.family.domain.Patient;
 import pl.familydoctor.family.mapper.Mapper;
 import pl.familydoctor.family.repository.DiseaseRepository;
+import pl.familydoctor.family.repository.PatientRepository;
 import pl.familydoctor.family.resource.dto.DiseaseDto;
 
 import java.util.List;
@@ -16,25 +17,31 @@ public class DiseaseService {
 
     private final DiseaseRepository diseaseRepository;
 
-    public DiseaseService(DiseaseMapper diseaseMapper, DiseaseRepository diseaseRepository) {
+    private final PatientRepository patientRepository;
+
+    public DiseaseService(Mapper<DiseaseDto, Disease> diseaseMapper, DiseaseRepository diseaseRepository, PatientRepository patientRepository) {
         this.diseaseMapper = diseaseMapper;
         this.diseaseRepository = diseaseRepository;
+        this.patientRepository = patientRepository;
     }
 
     public void createDisease(DiseaseDto diseaseDto) {
+        Long patientId = diseaseDto.getPatientId();
         Disease disease = diseaseMapper.convertToEntity(diseaseDto);
+        Patient patient = patientRepository.findOne(patientId);
+        disease.setPatient(patient);
         diseaseRepository.save(disease);
     }
 
-    public List<DiseaseDto> getAllDisease() {
-        List<Disease> diseaseList = diseaseRepository.findAll();
+    public List<DiseaseDto> getDiseasesByPatient(Long patientId) {
+        List<Disease> diseaseList = diseaseRepository.getAllByPatientId(patientId);
         List<DiseaseDto> diseaseDtoList = diseaseMapper.convertToDtos(diseaseList);
         return diseaseDtoList;
     }
 
     public DiseaseDto updateDisease(DiseaseDto diseaseDto) {
-        if (diseaseDto.getId()>0){
-            Disease disease=diseaseRepository.findOne(diseaseDto.getId());
+        if (diseaseDto.getId() > 0) {
+            Disease disease = diseaseRepository.findOne(diseaseDto.getId());
             disease.setDiseaseEndDate(diseaseDto.getDiseaseEndDate());
             disease.setDiseaseStartDate(diseaseDto.getDiseaseStartDate());
             disease.setDiagnosis(diseaseDto.getDiagnosis());
@@ -47,7 +54,7 @@ public class DiseaseService {
     }
 
     public void deleteDisease(DiseaseDto diseaseDto) {
-        if(diseaseDto.getId()>0){
+        if (diseaseDto.getId() > 0) {
             diseaseRepository.delete(diseaseDto.getId());
         }
     }

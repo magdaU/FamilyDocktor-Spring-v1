@@ -6,14 +6,15 @@ import {Observable} from "rxjs/Observable";
 @Injectable()
 export class DiseaseService {
 
-  private apiURL = 'http://localhost:8080/api/patient/disease';
+  private apiURL = 'http://localhost:8080/api/disease';
 
   constructor(private http: HttpClient) {
   }
 
-  findAll(): Observable<Array<Disease>>{
-    return this.http.get<Array<Disease>> (this.apiURL);
+  findAllByPatientId(idPatient: number): Observable<Array<Disease>>{
+    return this.http.get<Array<Disease>> (this.apiURL + '/patient/' + idPatient);
   }
+
   create(disease: Disease): Observable<Disease> {
     return this.http.post(this.apiURL, disease);
   }

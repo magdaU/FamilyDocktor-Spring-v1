@@ -1,10 +1,10 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {PatientDetailComponent} from './patient-detail.component';
 
 const routes: Routes = [
   {
-    path: 'patient/:id/detail', component: PatientDetailComponent
+    path: 'patient/:id', component: PatientDetailComponent
   }
 ];
 

@@ -40,11 +40,11 @@ public class Test {
         MedicalAdvice medicalAdvice = new MedicalAdvice();
         medicalAdvice.setComment("Komentarz");
         medicalAdvice.setDoctorAdvice(true);
-        medicalAdvice.setDosageFromDate(new Date());
-        medicalAdvice.setDosageToDate(new Date());
-        medicalAdvice.setDrugName("Antybiotyk");
-        medicalAdvice.setFrequency("3/1");
-
+//        medicalAdvice.setDosageFromDate(new Date());
+//        medicalAdvice.setDosageToDate(new Date());
+//        medicalAdvice.setDrugName("Antybiotyk");
+//        medicalAdvice.setFrequency("3/1");
+//
         medicalAdviceRepository.save(medicalAdvice);
 
         Disease disease = new Disease();
