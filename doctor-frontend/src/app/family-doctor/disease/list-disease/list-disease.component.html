@@ -13,6 +13,7 @@
           <th>Is doctor diagnosis</th>
           <th>Disease Start Date</th>
           <th>Disease End Date</th>
+          <th>Medical Advice</th>
         </tr>
         </thead>
         <tbody>
@@ -23,6 +24,7 @@
           <td>{{disease.isDoctorDiagnosis}}</td>
           <td>{{disease.diseaseStartDate | date}}</td>
           <td>{{disease.diseaseEndDate | date}}</td>
+          <td><button mat-raised-button routerLink="{{disease.id}}/advice" color="primary">Disease list</button></td>
         </tr>
         </tbody>
       </table>

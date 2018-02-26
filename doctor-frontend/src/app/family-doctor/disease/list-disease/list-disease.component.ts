@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Disease} from '../disease.model';
 import {DiseaseService} from '../disease.service';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-list-disease',
@@ -11,6 +11,8 @@ import {ActivatedRoute} from "@angular/router";
 export class ListDiseaseComponent implements OnInit {
 
   diseases: Array<Disease>
+
+  idDisease: number;
 
   idPatient: number;
   private sub: any;
