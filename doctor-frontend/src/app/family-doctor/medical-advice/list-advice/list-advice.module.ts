@@ -3,11 +3,15 @@ import {CommonModule} from '@angular/common';
 
 import {ListAdviceRoutingModule} from './list-advice-routing.module';
 import {ListAdviceComponent} from './list-advice.component';
+import {MatButtonModule} from '@angular/material';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
-    ListAdviceRoutingModule
+    ListAdviceRoutingModule,
+    MatButtonModule,
+    RouterModule
   ],
   declarations: [ListAdviceComponent]
 })

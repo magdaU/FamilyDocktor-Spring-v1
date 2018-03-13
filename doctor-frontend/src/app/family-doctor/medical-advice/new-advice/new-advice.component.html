@@ -2,19 +2,15 @@
   <h4>Add new advice</h4>
   <form class="fd-form">
     <mat-form-field class="fd-full-width">
-      <input matInput [matDatepicker]="picker" placeholder="Choose a birthdate" [(ngModel)]="advice.birthDate"
-             name="birthDate">
+      <input matInput [matDatepicker]="picker" placeholder="Choose advice date" [(ngModel)]="advice.adviceDate"
+             name="adviceName">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
     <mat-form-field class="fd-full-width">
-      <input matInput placeholder="First name" [(ngModel)]="advice.firstName" name="firstName">
-    </mat-form-field>
-    <mat-form-field class="fd-full-width">
-      <input matInput placeholder="Last name" [(ngModel)]="advice.lastName" name="lastName">
+      <input matInput placeholder="Comment" [(ngModel)]="advice.comment" name="comment">
     </mat-form-field>
 
     <button mat-raised-button color="primary" (click)="save()">Save</button>
-    <button mat-raised-button color="primary" (click)="goBack()">Go back</button>
   </form>
 </div>

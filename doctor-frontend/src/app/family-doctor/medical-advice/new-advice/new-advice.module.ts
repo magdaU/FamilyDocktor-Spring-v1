@@ -6,6 +6,7 @@ import {MatButtonModule, MatInputModule, MatNativeDateModule, MatSelectModule} f
 import {FormsModule} from '@angular/forms';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {AdviceService} from '../advice.service';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatNativeDateModule,
     MatSelectModule
   ],
-  declarations: [NewAdviceComponent]
+  declarations: [NewAdviceComponent],
+  providers: [AdviceService]
 })
 export class NewAdviceModule { }

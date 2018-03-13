@@ -5,7 +5,7 @@ import pl.familydoctor.family.service.PatientService;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://194.182.71.59:8080")
 @RestController
 @RequestMapping(path = "/api/patient")
 public class PatientResource {
@@ -24,6 +24,7 @@ public class PatientResource {
 
     @PostMapping
     public void addPatient(@RequestBody PatientDto patientDto) {
+        System.out.println(patientDto.toString());
         patientService.addPatient(patientDto);
     }
 }

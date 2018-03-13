@@ -10,7 +10,7 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class ListDiseaseComponent implements OnInit {
 
-  diseases: Array<Disease>
+  diseases: Array<Disease>;
 
   idDisease: number;
 

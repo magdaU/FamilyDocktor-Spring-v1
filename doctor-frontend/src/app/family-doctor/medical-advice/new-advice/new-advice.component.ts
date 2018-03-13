@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {Advice} from '../advice.model';
+import {AdviceService} from '../advice.service';
 
 @Component({
   selector: 'app-new-advice',
@@ -7,9 +9,15 @@ import {Component, OnInit} from '@angular/core';
 })
 export class NewAdviceComponent implements OnInit {
 
-  constructor() { }
+  advice: Advice;
+
+  constructor(private adviceService: AdviceService) { }
 
   ngOnInit() {
+    this.advice = {};
   }
 
+  save() {
+    this.adviceService.create(this.advice).subscribe();
+  }
 }

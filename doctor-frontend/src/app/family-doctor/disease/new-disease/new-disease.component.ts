@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Disease} from "../disease.model";
-import {DiseaseService} from "../disease.service";
-import {ActivatedRoute} from "@angular/router";
+import {Disease} from '../disease.model';
+import {DiseaseService} from '../disease.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-new-disease',
