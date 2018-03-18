@@ -26,7 +26,7 @@
     <ng-container matColumnDef="operation">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Operations</mat-header-cell>
       <mat-cell *matCellDef="let row">
-        <button mat-raised-button color="primary" routerLink="patient/{{row.id}}">Disease</button>
+        <button mat-raised-button color="primary" routerLink="/patient/{{row.id}}">Details</button>
       </mat-cell>
     </ng-container>
 

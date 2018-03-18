@@ -6,7 +6,7 @@ import pl.familydoctor.family.service.DiseaseService;
 
 import java.util.List;
 
-//@CrossOrigin(origins = "http://194.182.71.59:8080")
+@CrossOrigin(origins = "http://194.182.71.59:8080")
 @RestController
 @RequestMapping(path = "/api/disease")
 public class DiseaseResource {
