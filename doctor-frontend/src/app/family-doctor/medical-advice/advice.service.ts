@@ -6,7 +6,7 @@ import {HttpClient} from '@angular/common/http';
 @Injectable()
 export class AdviceService {
 
-  private apiUrl = 'http://family.alburnus.pl:8080/api/patient';
+  private apiUrl = 'http://localhost:8080/api/advice';
 
   constructor(private http: HttpClient) {
   }

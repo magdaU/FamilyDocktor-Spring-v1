@@ -6,7 +6,8 @@ import {Observable} from 'rxjs/Observable';
 @Injectable()
 export class PatientService {
 
-  private apiUrl = 'http://family.alburnus.pl:8080/api/patient';
+  private apiUrl = 'http://localhost:8080/api/patient';
+  // private apiUrl = 'http://family.alburnus.pl:8080/api/patient';
 
   constructor(private http: HttpClient) {
   }
