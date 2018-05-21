@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {NewDiseaseComponent} from "./new-disease/new-disease.component";
-import {ListDiseaseComponent} from "./list-disease/list-disease.component";
+import {NewDiseaseComponent} from './new-disease/new-disease.component';
+import {ListDiseaseComponent} from './list-disease/list-disease.component';
 
 
 const routes: Routes = [

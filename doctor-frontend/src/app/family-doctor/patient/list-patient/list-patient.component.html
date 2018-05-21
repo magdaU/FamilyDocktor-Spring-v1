@@ -1,31 +1,41 @@
-<div class="container">
-  <div class="row">
-    <h4>List of patients</h4>
-  </div>
-  <div class="row">
-    <div class="table-responsive">
-      <table class="table table-striped">
-        <thead>
-        <tr>
-          <th>ID</th>
-          <th>First name</th>
-          <th>Last name</th>
-          <th>Birth Date</th>
-          <th></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let patient of patients">
-          <td>{{patient.id}}</td>
-          <td>{{patient.firstName}}</td>
-          <td>{{patient.lastName}}</td>
-          <td>{{patient.birthDate | date}}</td>
-          <td>
-            <button mat-fab color="primary" routerLink="/patient/{{patient.id}}">Details</button>
-          </td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+<div class="fc-container mat-elevation-z8 mat-table">
+  <h4>List of patients</h4>
+  <mat-table [dataSource]="dataSource" matSort>
+
+    <ng-container matColumnDef="firstName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> First Name</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.firstName}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="lastName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Last Name</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.lastName}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="birthDate">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> BirthDate</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.birthDate | date: 'fullDate'}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="sex">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Sex</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.sex}}</mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="operation">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Operations</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <button mat-raised-button color="primary" routerLink="/patient/{{row.id}}">Details</button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;">
+    </mat-row>
+  </mat-table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
 </div>
+
+

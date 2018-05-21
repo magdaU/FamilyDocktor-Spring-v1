@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Disease} from "../disease.model";
-import {DiseaseService} from "../disease.service";
-import {ActivatedRoute} from "@angular/router";
+import {Disease} from '../disease.model';
+import {DiseaseService} from '../disease.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-new-disease',
@@ -15,7 +15,6 @@ export class NewDiseaseComponent implements OnInit {
   idPatient: number;
   private sub: any;
 
-
   constructor(private diseaseService: DiseaseService, private route: ActivatedRoute) {
   }
 
@@ -28,11 +27,12 @@ export class NewDiseaseComponent implements OnInit {
   }
 
   save() {
+    console.log(this.disease);
     this.disease.patientId = this.idPatient;
     this.diseaseService.create(this.disease).subscribe();
   }
 
   goBack() {
-
+    window.history.back();
   }
 }

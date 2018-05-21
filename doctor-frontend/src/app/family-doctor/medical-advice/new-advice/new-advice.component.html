@@ -1,0 +1,16 @@
+<div class="fd-container mat-elevation-z8 mat-table">
+  <h4>Add new advice</h4>
+  <form class="fd-form">
+    <mat-form-field class="fd-full-width">
+      <input matInput [matDatepicker]="picker" placeholder="Choose advice date" [(ngModel)]="advice.adviceDate"
+             name="adviceName">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="fd-full-width">
+      <input matInput placeholder="Comment" [(ngModel)]="advice.comment" name="comment">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="save()">Save</button>
+  </form>
+</div>

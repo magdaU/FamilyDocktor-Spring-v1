@@ -1,31 +1,43 @@
-<div class="container">
-  <div class="row">
-    <h4>List of diseases</h4>
-  </div>
-  <div class="row">
-    <div class="table-responsive">
-      <table class="table table-striped">
-        <thead>
-        <tr>
-          <th>ID</th>
-          <th>Symptom</th>
-          <th>Diagnosis</th>
-          <th>Is doctor diagnosis</th>
-          <th>Disease Start Date</th>
-          <th>Disease End Date</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let disease of diseases">
-          <td>{{disease.id}}</td>
-          <td>{{disease.symptom}}</td>
-          <td>{{disease.diagnosis}}</td>
-          <td>{{disease.isDoctorDiagnosis}}</td>
-          <td>{{disease.diseaseStartDate | date}}</td>
-          <td>{{disease.diseaseEndDate | date}}</td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+<div class="fc-container mat-elevation-z8 mat-table">
+  <h4>List of disease</h4>
+  <mat-table [dataSource]="dataSource" matSort>
+
+    <ng-container matColumnDef="symptom">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Symptom</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.symptom}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="diagnosis">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Diagnosis</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.diagnosis}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="isDoctorDiagnosis">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Is doctor</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.isDoctorDiagnosis}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="diseaseStartDate">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Start date</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.diseaseStartDate | date: 'fullDate'}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="diseaseEndDate">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> End date</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.diseaseEndDate | date: 'fullDate'}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="operation">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Operations</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <button mat-raised-button color="primary" routerLink="{{row.id}}/advice">Advices</button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;">
+    </mat-row>
+  </mat-table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
 </div>

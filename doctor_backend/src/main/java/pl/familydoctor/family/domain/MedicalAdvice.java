@@ -11,6 +11,8 @@ import java.util.List;
 @Data
 public class MedicalAdvice extends BaseEntity {
 
+    //TODO dodać atrybut adviceDate
+
     private boolean doctorAdvice;
 
     private String comment;

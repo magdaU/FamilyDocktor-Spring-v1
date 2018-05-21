@@ -1,12 +1,9 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
-import { DiseaseRoutingModule } from './disease-routing.module';
-import {NewDiseaseModule} from "./new-disease/new-disease.module";
-import {FormsModule} from "@angular/forms";
-import {ListDiseaseComponent} from "./list-disease/list-disease.component";
-import {ListDiseaseModule} from "./list-disease/list-disease.module";
-import {NewDiseaseComponent} from "./new-disease/new-disease.component";
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {DiseaseRoutingModule} from './disease-routing.module';
+import {NewDiseaseModule} from './new-disease/new-disease.module';
+import {FormsModule} from '@angular/forms';
+import {ListDiseaseModule} from './list-disease/list-disease.module';
 
 @NgModule({
   imports: [
@@ -18,4 +15,5 @@ import {NewDiseaseComponent} from "./new-disease/new-disease.component";
   ],
   declarations: []
 })
-export class DiseaseModule { }
+export class DiseaseModule {
+}

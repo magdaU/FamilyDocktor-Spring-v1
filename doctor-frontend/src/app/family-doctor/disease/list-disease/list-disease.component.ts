@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Disease} from '../disease.model';
 import {DiseaseService} from '../disease.service';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute} from '@angular/router';
+import {MatPaginator, MatTableDataSource} from '@angular/material';
 
 @Component({
   selector: 'app-list-disease',
@@ -10,7 +11,12 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class ListDiseaseComponent implements OnInit {
 
-  diseases: Array<Disease>
+  displayedColumns = ['symptom', 'diagnosis', 'isDoctorDiagnosis', 'diseaseStartDate', 'diseaseEndDate', 'operation'];
+  dataSource: MatTableDataSource<Disease>;
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  idDisease: number;
 
   idPatient: number;
   private sub: any;
@@ -24,7 +30,8 @@ export class ListDiseaseComponent implements OnInit {
 
     this.diseaseService.findAllByPatientId(this.idPatient).subscribe(
       results => {
-        this.diseases = results;
+        this.dataSource = new MatTableDataSource<Disease>(results);
+        this.dataSource.paginator = this.paginator;
       },
       err => {
         console.log(err);
