@@ -23,10 +23,10 @@ public class BirthdayValidatorTest {
     @Test
     public void whenBirthDateBeforeToday_thenReturnTrue(){
         //Given
-        Date now = new Date(117,1,1);
+        Date beforeNow = new Date(117,1,1);
         BirthdayValidator validator = new BirthdayValidator();
         //When
-        Boolean result = validator.isValid(now);
+        Boolean result = validator.isValid(beforeNow);
         //Then
         Assert.assertEquals(Boolean.TRUE,result);
     }
