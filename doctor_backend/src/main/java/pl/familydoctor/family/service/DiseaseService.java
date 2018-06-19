@@ -7,6 +7,7 @@ import pl.familydoctor.family.mapper.Mapper;
 import pl.familydoctor.family.repository.DiseaseRepository;
 import pl.familydoctor.family.repository.PatientRepository;
 import pl.familydoctor.family.resource.dto.DiseaseDto;
+import pl.familydoctor.family.validation.DiseaseDateValidator;
 
 import java.util.List;
 
@@ -19,18 +20,23 @@ public class DiseaseService {
 
     private final PatientRepository patientRepository;
 
-    public DiseaseService(Mapper<DiseaseDto, Disease> diseaseMapper, DiseaseRepository diseaseRepository, PatientRepository patientRepository) {
+    private final DiseaseDateValidator diseaseDateValidator;
+
+    public DiseaseService(Mapper<DiseaseDto, Disease> diseaseMapper, DiseaseRepository diseaseRepository, PatientRepository patientRepository, DiseaseDateValidator diseaseDateValidator) {
         this.diseaseMapper = diseaseMapper;
         this.diseaseRepository = diseaseRepository;
         this.patientRepository = patientRepository;
+        this.diseaseDateValidator = diseaseDateValidator;
     }
 
     public void createDisease(DiseaseDto diseaseDto) {
-        Long patientId = diseaseDto.getPatientId();
-        Disease disease = diseaseMapper.convertToEntity(diseaseDto);
-        Patient patient = patientRepository.findOne(patientId);
-        disease.setPatient(patient);
-        diseaseRepository.save(disease);
+        if (diseaseDateValidator.isValid(diseaseDto)) {
+            Long patientId = diseaseDto.getPatientId();
+            Disease disease = diseaseMapper.convertToEntity(diseaseDto);
+            Patient patient = patientRepository.findOne(patientId);
+            disease.setPatient(patient);
+            diseaseRepository.save(disease);
+        }
     }
 
     public List<DiseaseDto> getDiseasesByPatient(Long patientId) {

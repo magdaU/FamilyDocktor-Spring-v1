@@ -9,4 +9,6 @@ public interface DiseaseRepository extends JpaRepository<Disease, Long> {
 
     List<Disease> getAllByPatientId(Long patientId);
 
+    List<Disease> getAllBySymptom(String symptom);
+
 }
